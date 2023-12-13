@@ -1,0 +1,45 @@
+<div class="relative bg-white">
+  <div class="mx-auto px-4 py-4 sm:px-6">
+    <div class="flex justify-center items-center py-6 md:justify-between md:space-x-10">
+        <!-- STORE NAME / STORE LOGO -->
+        <div class="flex justify-start">
+            <h1 class="text-xl font-pp font-bold">{{ shop.name }}</h1>
+        </div>
+       <!-- STORE NAME / STORE LOGO ENDS -->
+
+        <!-- NAVBAR STARTS -->
+        <nav class="hidden md:flex space-x-10">
+          {% for link in linklists.main-menu.links %}
+            <div class="relative">
+              {% if link.links != blank %}
+                <div class="relative">
+                  <button type="button" class="inline-flex items-center text-base text-gray-500 hover:text-gray-900">
+                    {{ link.title }}
+                    {% render 'dropdown-icon' %}
+                  </button>
+                </div>
+                {% else %}
+                <div class="relative">
+                  <a  href="{{ link.url }}" class="text-base text-gray-500 hover:text-gray-900  nav-link">{{ link.title }}</a>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </nav>
+
+         <!--NAVBAR ENDS -->
+
+        <div class="hidden md:flex items-center justify-end md:flex-1 space-x-5">
+          <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
+          {% render 'cart-icon' %}
+          </a>
+          <a href="{{ routes.account_login_url }}" class="text-base text-gray-500 hover:text-gray-900">Login
+          </a>
+          <a href="{{ routes.account_register_url }}" class="text-base text-gray-500 hover:text-gray-900">
+            Register
+          </a>
+        </div>
+
+      </div>
+  </div>
+</div>
